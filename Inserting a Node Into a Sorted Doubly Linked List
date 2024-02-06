@@ -1,0 +1,17 @@
+//using java 15
+    public static DoublyLinkedListNode sortedInsert(DoublyLinkedListNode llist, int data) {
+    // Write your code here
+        DoublyLinkedListNode node = new DoublyLinkedListNode(data);
+        if (llist == null) {
+            return node;
+        } else if (data <= llist.data) {
+            node.next = llist;
+            llist.prev = node;
+            return node;
+        } else {
+            DoublyLinkedListNode ptr = sortedInsert(llist.next, data);
+            llist.next = ptr;
+            ptr.prev = llist;
+            return llist;
+    }
+    }
